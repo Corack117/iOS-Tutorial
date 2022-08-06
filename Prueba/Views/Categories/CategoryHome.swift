@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var showingProgile = false
     
     var body: some View {
         NavigationView {
@@ -25,7 +26,19 @@ struct CategoryHome: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
+            .listStyle(.inset)
             .navigationTitle("Featured")
+            .toolbar {
+                Button {
+                    showingProgile.toggle()
+                } label: {
+                    Label("User Profile", systemImage: "person.crop.circle")
+                }
+            }
+            .sheet(isPresented: $showingProgile) {
+                ProfileHost()
+                    .environmentObject(modelData)
+            }
         }
     }
 }

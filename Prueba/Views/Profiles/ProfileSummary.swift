@@ -37,9 +37,10 @@ struct ProfileSummary: View {
                                 .grayscale(0.5)
                                 .hueRotation(Angle(degrees: 45))
                         }
+                        .padding(.bottom)
                     }
                 }
-                
+                Divider() 
                 VStack {
                     Text("Recient Hakes")
                         .font(.headline)
